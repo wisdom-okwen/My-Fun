@@ -11,6 +11,11 @@ export const App: React.FC<AppProps> = ({message}) => {
         <>
             <div>{message}</div>
             <LandingPage />
+            <LandingPage />
+            <LandingPage />
+            <LandingPage />
+            <LandingPage />
+            <LandingPage />
         </>
     );
 }
