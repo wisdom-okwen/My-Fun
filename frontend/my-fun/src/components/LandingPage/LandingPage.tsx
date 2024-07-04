@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function LandingPage() {
+export const LandingPage: React.FC =() => {
     return (
         <h1>
             Welcome To My Fun!

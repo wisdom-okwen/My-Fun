@@ -1,12 +1,12 @@
 import './App.css';
 import React from 'react';
-import { LandingPage } from './components/LandingPage';
+import { LandingPage } from './components/LandingPage/LandingPage';
 
 interface AppProps{
     message: string;
 }
 
-const App: React.FC<AppProps> = ({message}) => {
+export const App: React.FC<AppProps> = ({message}) => {
     return (
         <>
             <div>{message}</div>
@@ -15,4 +15,3 @@ const App: React.FC<AppProps> = ({message}) => {
     );
 }
 
-export default App;
