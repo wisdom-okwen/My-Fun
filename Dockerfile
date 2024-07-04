@@ -8,7 +8,7 @@ WORKDIR /workspace/frontend/my-fun
 RUN npm install
 ENV SHELL=/bin/bash
 #Copy all files and directories in frontend
-COPY ./frontend /workspace/frontend/
+COPY ./frontend/my-fun /workspace/frontend/my-fun
 # Build the application
 RUN npm run build
 # Serve the app
@@ -16,7 +16,7 @@ RUN npm install -g serve
 
 
 # Backend build
-FROM python:3.10
+FROM python:3.11
 # Set environment time zone
 ENV TZ="America/New_York"
 # Install latest version of pip
