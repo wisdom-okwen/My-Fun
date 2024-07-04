@@ -1,14 +1,15 @@
 # Frontend build
 FROM node:18 as build
-# Copy package files
-COPY ./fronend/my-fun/package.json /workspace/fronend/my-fun/package.json
-COPY ./fronend/my-fun/tsconfig.json /workspace/fronend/my-fun/tsconfig.json
+# Set working directory
 WORKDIR /workspace/frontend/my-fun
+# Copy package files
+COPY ./frontend/my-fun/package.json ./
+COPY ./frontend/my-fun/tsconfig.json ./
 # Install dependencies
-RUN npm install
+RUN npm install --force
 ENV SHELL=/bin/bash
 #Copy all files and directories in frontend
-COPY ./frontend/my-fun /workspace/frontend/my-fun
+COPY ./frontend/my-fun ./
 # Build the application
 RUN npm run build
 # Serve the app
