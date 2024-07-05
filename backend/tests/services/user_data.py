@@ -19,18 +19,18 @@ evan = User(
     email="evanexplorer@gmail.com",
     bio="Hey there! Let's explored Washington!",
     pronouns="He / Him / His", 
-    phone=1111111111
+    phone=11111111
 )
 
 harry = User(
-    id=1,
+    id=2,
     first_name="Harry",
     last_name="Helper",
     username="harryhelper",
     email="harryhelper@gmail.com",
     bio="Hey there! Let's explored Washington!",
     pronouns="He / Him / His", 
-    phone=2222222222
+    phone=2222222
 )
 
 users = [evan, harry]

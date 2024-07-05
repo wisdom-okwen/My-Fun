@@ -20,7 +20,29 @@ def get_user(
         user_service: a valid UserService
 
     Returns:
-        list[User]: All `Announcement`s in the `Announcement` database table
+        list[User]: All `User`s in the `User` database table
     """
     # Return all users
     return user_service.all()
+
+
+@api.post("", response_model=User, tags=["User"])
+def new_announcement(
+    user: User,
+    user_service: UserService = Depends(),
+) -> User:
+    """
+    Create announcement
+
+    Parameters:
+        announcement: a valid Announcement model
+        subject: a valid User model representing the currently logged in User
+        announcement_service: a valid AnnouncementService
+
+    Returns:
+        Announcement: Created announcement
+
+    Raises:
+        HTTPException 422 if create() raises an Exception
+    """
+    return user_service.create(user)

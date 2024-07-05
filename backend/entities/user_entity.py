@@ -13,7 +13,7 @@ class UserEntity(EntityBase):
     __tablename__ = "user"
 
     # Unique identifier for user entity
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     # First name of user
     first_name: Mapped[str] = mapped_column(String(64), nullable=False, default="")
     # Last name of user

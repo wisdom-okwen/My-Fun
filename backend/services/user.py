@@ -52,7 +52,7 @@ class UserService:
         user = user_entity.to_model()
         return user
     
-    def create(self, subject: User, user: User) -> User:
+    def create(self, user: User) -> User:
         """Create a User.
 
         If the subject is not the user, the subject must have the `user.create` permission.
