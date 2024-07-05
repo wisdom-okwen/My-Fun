@@ -7,7 +7,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
     volumes:
       - ..:/workspace
-      - myfun-node_modules:/workspace/frontend/node_modules
+      - myfun-node_modules:/workspace/frontend/my-fun/node_modules
     command: /bin/sh -c "while sleep 1000; do :; done"
     environment:
       - windir # Defined on Windows but not on other platforms
