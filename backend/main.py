@@ -5,6 +5,11 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.gzip import GZipMiddleware
 
+from .api import (
+    user,
+    static_files
+)
+
 description = """
 Welcome to the **My Fun App** RESTful Application Programming Interface.
 """
@@ -14,20 +19,22 @@ app = FastAPI(
     title="My Fun App",
     version="0.0.1",
     description=description,
-    openapi_tags=[],
+    openapi_tags=[
+        user.openapi_tags
+    ],
 )
 
 # Use GZip middleware for compressing HTML responses over the network
 app.add_middleware(GZipMiddleware)
 
 # Plugging in each of the router APIs
-feature_apis = []
+feature_apis = [user]
 
 for feature_api in feature_apis:
     app.include_router(feature_api.api)
 
 # Static file mount used for serving React front-end in production, as well as static assets
-# app.mount("/", static_files.StaticFileMiddleware(directory=Path("./static")))
+app.mount("/", static_files.StaticFileMiddleware(directory=Path("./static")))
 
 
 # Add application-wide exception handling middleware for commonly encountered API Exceptions
