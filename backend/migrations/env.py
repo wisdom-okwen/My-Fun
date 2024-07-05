@@ -9,6 +9,9 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
+# Use our project's environment variables for the connection string:
+from backend import database
+
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:
@@ -18,7 +21,9 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+from backend.entities import EntityBase
+
+target_metadata = EntityBase.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
