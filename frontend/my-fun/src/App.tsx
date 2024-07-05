@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { LandingPage } from './components/LandingPage/LandingPage';
+import { Shell } from './components/Shell/Shell';
 
 interface AppProps{
     message: string;
@@ -9,13 +9,7 @@ interface AppProps{
 export const App: React.FC<AppProps> = ({message}) => {
     return (
         <>
-            <div>{message}</div>
-            <LandingPage />
-            <LandingPage />
-            <LandingPage />
-            <LandingPage />
-            <LandingPage />
-            <LandingPage />
+            <Shell />
         </>
     );
 }

@@ -8,4 +8,4 @@ const LandingPage: React.FC =() => {
     )
 }
 
-export {LandingPage};
+export { LandingPage };
