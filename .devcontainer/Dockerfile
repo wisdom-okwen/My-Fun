@@ -87,16 +87,16 @@ RUN curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.
 RUN sudo locale-gen en_US.UTF-8
 
 # Add `oc` OpenShift Client to DevContainer
-# RUN arch="$(arch)"; \
-#     case "$arch" in \
-#         x86_64) export TARGET='' ;; \
-#         aarch64) export TARGET='arm64-' ;; \
-#     esac; \
-#     wget -O /tmp/oc.tgz "https://github.com/okd-project/okd/releases/download/4.14.0-0.okd-2023-12-01-225814/openshift-client-linux-${TARGET}4.14.0-0.okd-2023-12-01-225814.tar.gz" && \
-#     cd /tmp && \
-#     tar -xvzf oc.tgz && \
-#     sudo mv oc /usr/bin/oc && \
-#     rm kubectl oc.tgz README.md
+RUN arch="$(arch)"; \
+    case "$arch" in \
+        x86_64) export TARGET='' ;; \
+        aarch64) export TARGET='arm64-' ;; \
+    esac; \
+    wget -O /tmp/oc.tgz "https://github.com/okd-project/okd/releases/download/4.14.0-0.okd-2023-12-01-225814/openshift-client-linux-${TARGET}4.14.0-0.okd-2023-12-01-225814.tar.gz" && \
+    cd /tmp && \
+    tar -xvzf oc.tgz && \
+    sudo mv oc /usr/bin/oc && \
+    rm kubectl oc.tgz README.md
 
 # Install Database Dependencies
 COPY backend/requirements.txt /workspace/backend/requirements.txt

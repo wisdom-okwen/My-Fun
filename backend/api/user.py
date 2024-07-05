@@ -9,7 +9,7 @@ openapi_tags = {
     "description": "User profile search and related operations."
 }
 
-@api.get('', response_model=list[User], tags=["Users"])
+@api.get('', response_model=list[User], tags=["User"])
 def get_user(
     user_service: UserService = Depends()
 ) -> list[User]:
