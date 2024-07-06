@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const UserService = new UserServiceImpl('/api');
 
 const initialState = {
-    isLogin: true,
+    isLoggedIn: true,
     username: '',
     password: '',
     firstName: '',
@@ -26,7 +26,6 @@ export const LoginPage: React.FC = () => {
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        console.log(`${name} changed to ${value}`);
         setFormState(prevState => ({
             ...prevState,
             [name]: value
@@ -36,7 +35,7 @@ export const LoginPage: React.FC = () => {
     const handleToggleForm = () => {
         setFormState(prevState => ({
             ...prevState,
-            isLogin: !prevState.isLogin
+            isLoggedIn: !prevState.isLoggedIn
         }));
     };
 
@@ -68,7 +67,7 @@ export const LoginPage: React.FC = () => {
 
     return (
         <div className="login-container">
-            {formState.isLogin ? (
+            {formState.isLoggedIn ? (
                 <LoginForm
                     username={formState.username}
                     password={formState.password}

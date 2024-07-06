@@ -26,23 +26,87 @@ def get_users(
     return user_service.all()
 
 
+@api.get(
+    "/{user_name}",
+    responses={404: {"model": None}},
+    response_model=User,
+    tags=["Users"],
+)
+def get_by_username(
+    username: str, user_service: UserService = Depends()
+) -> User:
+    """
+    Get user with matching username
+
+    Parameters:
+        username: a string representing a unique identifier for an User
+        user_service: a valid UserService
+
+    Returns:
+        User: User with matching username
+
+    Raises:
+        HTTPException 404 if get_by_username() raises an Exception
+    """
+
+    return user_service.get(username)
+
+
 @api.post("", response_model=User, tags=["Users"])
 def new_user(
     user: User,
     user_service: UserService = Depends(),
 ) -> User:
     """
-    Create announcement
+    Create user
 
     Parameters:
-        announcement: a valid Announcement model
+        user: a valid User model
         subject: a valid User model representing the currently logged in User
-        announcement_service: a valid AnnouncementService
+        user_service: a valid UserService
 
     Returns:
-        Announcement: Created announcement
+        User: Created user
 
     Raises:
         HTTPException 422 if create() raises an Exception
     """
     return user_service.create(user)
+
+@api.put('', response_model=User, tags=['Users'])
+def update_user(
+    user: User,
+    user_service: UserService = Depends()
+) -> User:
+    """
+    Update user
+
+    Params:
+        username: username of user to be updated
+        user: a valid user model
+    
+    Returns:
+        User: Updated user model
+    """
+    return user_service.update(user)
+    
+
+
+@api.delete("/{username}", response_model=None, tags=["Users"])
+def delete_user(
+    username: str,
+    user_service: UserService = Depends(),
+):
+    """
+    Delete user based on username
+
+    Parameters:
+        username: a string representing a unique identifier for an User
+        subject: a valid User model representing the currently logged in User
+        user_service: a valid UserService
+
+    Raises:
+        HTTPException 404 if delete() raises an Exception
+    """
+
+    user_service.delete(username)
