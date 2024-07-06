@@ -1,14 +1,11 @@
 import React from "react";
-import { postPageStyles } from "./PostPage.styles";
+import "./PostPage.css";
 import { LandingPage } from "../LandingPage/LandingPage";
 
 const PostPage: React.FC = () => {
     console.log("This page is rendered");
     return (
-        <div style={postPageStyles}>
-            <LandingPage />
-            <LandingPage />
-            <LandingPage />
+        <div className="post-page">
             <LandingPage />
         </div>
     );

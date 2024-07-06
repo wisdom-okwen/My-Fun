@@ -1,11 +1,11 @@
 import React from "react";
 import { SideBar } from "../SideBar/SideBar";
-import { shellStyles } from "./Shell.styles";
+import "./Shell.css";
 import { PostPage } from "../PostPage/PostPage";
 
 const Shell: React.FC = () => {
     return (
-        <div style={shellStyles}>
+        <div className="shell">
             <SideBar />
             <PostPage />
         </div>

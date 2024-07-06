@@ -13,7 +13,7 @@ const Profile: React.FC = () => {
 
     return (
         <>
-            <Avatar onClick={handleAvatarClick} alt="Remy Sharp" src="" />
+            <Avatar sx={{ color: 'white', backgroundColor: 'crimson' }} onClick={handleAvatarClick} alt="Remy Sharp" src="" />
         </>
     );
 };

@@ -1,10 +1,10 @@
 import React from "react";
-import { styles } from "./SideBar.styles";
+import "./SideBar.css";
 import { Profile } from "../Profile/Profile";
 
 const SideBar: React.FC = () => {
     return (
-        <div style={styles}>
+        <div className="sidebar">
             <Profile />
         </div>
     );
