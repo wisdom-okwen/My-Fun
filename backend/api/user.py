@@ -48,7 +48,6 @@ def get_by_username(
     Raises:
         HTTPException 404 if get_by_username() raises an Exception
     """
-
     return user_service.get(username)
 
 
@@ -73,6 +72,7 @@ def new_user(
     """
     return user_service.create(user)
 
+
 @api.put('', response_model=User, tags=['Users'])
 def update_user(
     user: User,
@@ -82,7 +82,6 @@ def update_user(
     Update user
 
     Params:
-        username: username of user to be updated
         user: a valid user model
     
     Returns:
@@ -108,5 +107,4 @@ def delete_user(
     Raises:
         HTTPException 404 if delete() raises an Exception
     """
-
     user_service.delete(username)
