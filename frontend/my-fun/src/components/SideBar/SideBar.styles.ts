@@ -1,5 +1,5 @@
 export const styles = {
-    // height: '100vh',
     width: '15%',
-    backgroundColor: 'red'
+    backgroundColor: 'cyan',
+    border: '0 2px 0 0 solid black'
 }

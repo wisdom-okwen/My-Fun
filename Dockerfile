@@ -10,10 +10,12 @@ RUN npm install --force
 ENV SHELL=/bin/bash
 #Copy all files and directories in frontend
 COPY ./frontend/my-fun ./
+# Serve the app
+RUN npm install --save-dev serve
 # Build the application
 RUN npm run build
-# Serve the app
-RUN npm install -g serve
+# Start development server using serve
+CMD ["serve", "-s", "frontend/my-fun/build"] 
 
 
 # Backend build
