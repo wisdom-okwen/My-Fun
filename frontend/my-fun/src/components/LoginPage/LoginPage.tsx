@@ -2,18 +2,25 @@ import React, { useState } from 'react';
 import { LoginForm } from './LoginForm';
 import { RegisterForm } from './RegisterForm';
 import './LoginPage.css';
+import { User } from '../../models/User.model';
+import { UserServiceImpl } from '../../services/UserService';
+
+
+const UserService = new UserServiceImpl('/api');
+
+const initialState = {
+    isLogin: true,
+    username: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    pronouns: ''
+}
 
 export const LoginPage: React.FC = () => {
-    const [formState, setFormState] = useState({
-        isLogin: true,
-        username: '',
-        password: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        pronouns: ''
-    });
+    const [formState, setFormState] = useState(initialState);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -35,8 +42,22 @@ export const LoginPage: React.FC = () => {
         console.log('Logging in with:', formState.username, formState.password);
     };
 
-    const handleRegister = () => {
-        // Add registration logic here
+    const handleRegister = async () => {
+        const { firstName, lastName, username, email, phone, pronouns, password } = formState;
+        const userData: Partial<User> = {
+            first_name: firstName,
+            last_name: lastName,
+            user_name: username,
+            phone: phone,
+            pronouns: pronouns,
+            email: email,
+            password: password
+        };
+
+        const newUser = await UserService.createUser(userData);
+        if (newUser) {
+            console.log('User registered successfully:', newUser)
+        }
         console.log('Registering with:', formState);
     };
 

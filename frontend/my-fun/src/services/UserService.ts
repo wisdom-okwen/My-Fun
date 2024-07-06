@@ -1,4 +1,4 @@
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import { User } from '../models/User.model';
 
 interface UserService {
@@ -9,7 +9,7 @@ interface UserService {
 
 class UserServiceImpl implements UserService {
     private baseUrl: string;
-    constructor(protected axios: Axios, baseUrl: string) {
+    constructor(baseUrl: string) {
         this.baseUrl = baseUrl;
     };
 
