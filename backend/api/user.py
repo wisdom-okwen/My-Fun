@@ -3,14 +3,14 @@ from fastapi import APIRouter, Depends
 from ..services.user import UserService
 from ..models import User
 
-api = APIRouter(prefix='/api/user')
+api = APIRouter(prefix='/api/users')
 openapi_tags = {
     "name": "Users",
     "description": "User profile search and related operations."
 }
 
-@api.get('', response_model=list[User], tags=["User"])
-def get_user(
+@api.get('', response_model=list[User], tags=["Users"])
+def get_users(
     user_service: UserService = Depends()
 ) -> list[User]:
     """
@@ -26,8 +26,8 @@ def get_user(
     return user_service.all()
 
 
-@api.post("", response_model=User, tags=["User"])
-def new_announcement(
+@api.post("", response_model=User, tags=["Users"])
+def new_user(
     user: User,
     user_service: UserService = Depends(),
 ) -> User:

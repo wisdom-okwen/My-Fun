@@ -20,7 +20,7 @@ class UserServiceImpl implements UserService {
         throw new Error('Method not implemented.');
     }
     createUser(userData: Partial<User>): Promise<User | null> {
-        return axios.post<User>(`${this.baseUrl}/user`, userData)
+        return axios.post<User>(`${this.baseUrl}/users`, userData)
             .then(response => response.data)
             .catch(error => {
                 console.error(error);

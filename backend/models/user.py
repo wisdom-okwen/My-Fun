@@ -12,4 +12,5 @@ class User(BaseModel):
     email: str = ''
     bio: str | None = None
     pronouns: str | None = None
-    phone: int | None = None
+    phone: str | None = None
+    password: str = ''

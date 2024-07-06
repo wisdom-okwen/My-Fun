@@ -3,6 +3,7 @@
 from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 
 from .api import (
@@ -26,6 +27,21 @@ app = FastAPI(
 
 # Use GZip middleware for compressing HTML responses over the network
 app.add_middleware(GZipMiddleware)
+
+# Define CORS settings
+origins = [
+    "http://localhost:1532",   # Another example if React is on a different port
+]
+
+# Apply CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
+
 
 # Plugging in each of the router APIs
 feature_apis = [user]

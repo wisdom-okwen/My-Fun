@@ -4,6 +4,7 @@ import { RegisterForm } from './RegisterForm';
 import './LoginPage.css';
 import { User } from '../../models/User.model';
 import { UserServiceImpl } from '../../services/UserService';
+import { useNavigate } from 'react-router-dom';
 
 
 const UserService = new UserServiceImpl('/api');
@@ -21,9 +22,11 @@ const initialState = {
 
 export const LoginPage: React.FC = () => {
     const [formState, setFormState] = useState(initialState);
+    const navigate = useNavigate();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
+        console.log(`${name} changed to ${value}`);
         setFormState(prevState => ({
             ...prevState,
             [name]: value
@@ -56,9 +59,11 @@ export const LoginPage: React.FC = () => {
 
         const newUser = await UserService.createUser(userData);
         if (newUser) {
-            console.log('User registered successfully:', newUser)
+            console.log('User registered successfully:', newUser.user_name)
+            navigate('/');
+        } else{
+            console.log('Registeration failed ', formState.username);
         }
-        console.log('Registering with:', formState);
     };
 
     return (

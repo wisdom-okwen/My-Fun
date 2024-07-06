@@ -27,7 +27,9 @@ class UserEntity(EntityBase):
     # User's pronouns
     pronouns: Mapped[str] = mapped_column(String(64))
     # User's phone number
-    phone: Mapped[int] = mapped_column(Integer, unique=True, nullable=True)
+    phone: Mapped[int] = mapped_column(String(64), unique=True, nullable=True)
+    # User's current password
+    password: Mapped[str] = mapped_column(String(64), nullable=False, default="")
 
     @classmethod
     def from_model(cls, model: User) -> Self:
@@ -48,7 +50,8 @@ class UserEntity(EntityBase):
             email=model.email,
             bio=model.bio,
             pronouns=model.pronouns,
-            phone=model.phone
+            phone=model.phone,
+            password=model.password
         )
 
     def to_model(self) -> User:
@@ -66,7 +69,8 @@ class UserEntity(EntityBase):
             email=self.email,
             bio=self.bio,
             pronouns=self.pronouns,
-            phone=self.phone
+            phone=self.phone,
+            password=self.password
         )
 
     def update(self, model: User) -> None:
@@ -86,3 +90,4 @@ class UserEntity(EntityBase):
         self.bio=model.bio
         self.pronouns=model.pronouns
         self.phone=model.phone
+        self.password=model.password
