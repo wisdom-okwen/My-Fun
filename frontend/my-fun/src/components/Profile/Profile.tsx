@@ -1,7 +1,9 @@
 import { Avatar } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../auth/AuthContext";
 
 const Profile: React.FC = () => {
+    const currentUser = useContext(UserContext);
     return (
         <>
             <Avatar alt="Remy Sharp" src="" />
@@ -9,4 +11,4 @@ const Profile: React.FC = () => {
     );
 };
 
-export { Profile }
+export { Profile };
