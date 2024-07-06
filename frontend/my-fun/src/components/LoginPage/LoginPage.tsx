@@ -17,6 +17,7 @@ const initialState = {
     lastName: '',
     email: '',
     phone: '',
+    bio: '',
     pronouns: ''
 }
 
@@ -24,7 +25,7 @@ export const LoginPage: React.FC = () => {
     const [formState, setFormState] = useState(initialState);
     const navigate = useNavigate();
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
         setFormState(prevState => ({
             ...prevState,
@@ -45,21 +46,23 @@ export const LoginPage: React.FC = () => {
     };
 
     const handleRegister = async () => {
-        const { firstName, lastName, username, email, phone, pronouns, password } = formState;
+        const { firstName, lastName, username, email, phone, bio, pronouns, password } = formState;
         const userData: Partial<User> = {
             first_name: firstName,
             last_name: lastName,
-            user_name: username,
+            username: username,
             phone: phone,
             pronouns: pronouns,
             email: email,
-            password: password
+            password: password,
+            bio: bio
         };
 
         const newUser = await UserService.createUser(userData);
         if (newUser) {
-            console.log('User registered successfully:', newUser.user_name)
+            console.log('User registered successfully:', newUser.username)
             navigate('/');
+            setFormState(initialState);
         } else{
             console.log('Registeration failed ', formState.username);
         }
@@ -82,6 +85,7 @@ export const LoginPage: React.FC = () => {
                     username={formState.username}
                     email={formState.email}
                     phone={formState.phone}
+                    bio={formState.bio}
                     pronouns={formState.pronouns}
                     password={formState.password}
                     onInputChange={handleInputChange}

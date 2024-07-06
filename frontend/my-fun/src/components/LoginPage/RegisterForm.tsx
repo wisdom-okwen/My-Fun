@@ -7,8 +7,9 @@ interface RegisterFormProps {
     email: string;
     phone: string;
     pronouns: string;
+    bio: string;
     password: string;
-    onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onInputChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onRegister: () => void;
     onToggleForm: () => void;
 }
@@ -20,6 +21,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
     email,
     phone,
     pronouns,
+    bio,
     password,
     onInputChange,
     onRegister,
@@ -98,6 +100,15 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
                         value={pronouns}
                         onChange={onInputChange}
                         required
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="bio">Bio</label>
+                    <textarea
+                        id="bio"
+                        name="bio"
+                        value={bio}
+                        onChange={onInputChange}
                     />
                 </div>
                 <div className="form-group">

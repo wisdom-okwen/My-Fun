@@ -7,9 +7,9 @@
 # 1532: Front-end (Webpack / React)
 
 http://localhost:1530 {
-    reverse_proxy /api* http://localhost:1531
-    reverse_proxy /docs* http://localhost:1531
-    reverse_proxy /auth* http://localhost:1531
+    reverse_proxy /api/* http://localhost:1531
+    reverse_proxy /docs/* http://localhost:1531
+    reverse_proxy /auth/* http://localhost:1531
     reverse_proxy /openapi.json http://localhost:1531
     reverse_proxy * http://localhost:1532
 }
