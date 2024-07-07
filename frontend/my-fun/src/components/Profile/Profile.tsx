@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../auth/AuthContext";
+import { UserContext } from "../../contexts/AuthContext";
 
 const Profile: React.FC = () => {
     const currentUser = useContext(UserContext);

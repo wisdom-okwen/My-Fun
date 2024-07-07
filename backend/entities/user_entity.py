@@ -72,22 +72,3 @@ class UserEntity(EntityBase):
             phone=self.phone,
             password=self.password
         )
-
-    def update(self, model: User) -> None:
-        """
-        Update a UserEntity from a User model.
-
-        Args:
-            model (User): The model to create a user entity from
-
-        Returns:
-            Self: The user entity
-        """
-        self.last_name=model.last_name
-        self.first_name=model.first_name
-        self.username=model.username
-        self.email=model.email
-        self.bio=model.bio
-        self.pronouns=model.pronouns
-        self.phone=model.phone
-        self.password=model.password

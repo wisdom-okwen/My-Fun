@@ -52,15 +52,16 @@ const UserContextProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [currentUser, dispatch] = useReducer(authReducer, initialState);
 
     const login = (userId: string, accessToken: string) => {
-        dispatch({ type: 'login', payload: { userId, accessToken } });
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('userId', userId);
+        dispatch({ type: 'login', payload: { userId, accessToken } });
     };
 
     const logout = () => {
         dispatch({ type: 'logout' });
         localStorage.removeItem('accessToken');
         localStorage.removeItem('userId');
+        window.location.reload();
     };
 
     useEffect(() => {

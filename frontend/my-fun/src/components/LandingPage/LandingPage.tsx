@@ -1,6 +1,8 @@
 import React from 'react';
 
 const LandingPage: React.FC =() => {
+    localStorage.setItem('prevPage', '/');
+
     return (
         <h1>
             Welcome To My Fun!

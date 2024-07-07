@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Shell } from './components/Shell/Shell';
-import { UserContextProvider } from './auth/AuthContext';
+import { UserContextProvider } from './contexts/AuthContext';
 import { LoginPage } from './components/LoginPage/LoginPage';
 
 export const App: React.FC = () => {

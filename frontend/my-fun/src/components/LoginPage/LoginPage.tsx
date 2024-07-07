@@ -5,9 +5,10 @@ import './LoginPage.css';
 import { User } from '../../models/User.model';
 import { UserServiceImpl } from '../../services/UserService';
 import { useNavigate } from 'react-router-dom';
+// import { UserContext } from '../../contexts/AuthContext';
 
 
-const UserService = new UserServiceImpl('/api');
+const userService = new UserServiceImpl('/api');
 
 const initialState = {
     isLoggedIn: true,
@@ -22,6 +23,7 @@ const initialState = {
 }
 
 export const LoginPage: React.FC = () => {
+    // const { login } = useContext(UserContext);
     const [formState, setFormState] = useState(initialState);
     const navigate = useNavigate();
 
@@ -40,9 +42,17 @@ export const LoginPage: React.FC = () => {
         }));
     };
 
-    const handleLogin = () => {
-        // Add login logic here
-        console.log('Logging in with:', formState.username, formState.password);
+    const handleLogin = async () => {
+        const { username, password } = formState;
+        const loggedUser = await userService.logInUser(username, password);
+        if (loggedUser) {
+            // login(loggedUser.userId, loggedUser.accessToken)
+            navigate(localStorage.getItem('prevPage') || '/');
+            console.log('Logging in with:', username, password);
+            setFormState(initialState);
+        } else {
+            console.log('Login failed for username:  ', username)
+        }
     };
 
     const handleRegister = async () => {
@@ -58,7 +68,7 @@ export const LoginPage: React.FC = () => {
             bio: bio
         };
 
-        const newUser = await UserService.createUser(userData);
+        const newUser = await userService.createUser(userData);
         if (newUser) {
             console.log('User registered successfully:', newUser.username)
             navigate('/');
