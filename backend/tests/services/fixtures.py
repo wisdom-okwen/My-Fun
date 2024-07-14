@@ -47,5 +47,3 @@ def post_svc(session: Session):
 def post_svc_integration(session: Session):
     """This fixture is used to test the PostService class."""
     return PostService(session)
-
-
