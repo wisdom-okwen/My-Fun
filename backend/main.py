@@ -8,7 +8,8 @@ from fastapi.middleware.gzip import GZipMiddleware
 
 from .api import (
     user,
-    static_files
+    static_files,
+    post
 )
 
 description = """
@@ -21,7 +22,8 @@ app = FastAPI(
     version="0.0.1",
     description=description,
     openapi_tags=[
-        user.openapi_tags
+        user.openapi_tags,
+        post.openapi_tags,
     ],
 )
 
@@ -44,7 +46,7 @@ app.add_middleware(
 
 
 # Plugging in each of the router APIs
-feature_apis = [user]
+feature_apis = [user, post]
 
 for feature_api in feature_apis:
     app.include_router(feature_api.api)

@@ -15,3 +15,4 @@ global to a module are available for import from other modules.
 """
 from .entity_base import EntityBase
 from .user_entity import UserEntity
+from .post import PostEntity
