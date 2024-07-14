@@ -33,7 +33,7 @@ class PostService:
     def get(self, id: int) -> Post:
         """Get a post by its id."""
         query = select(PostEntity).where(PostEntity.id == id)
-        entity: PostEntity | None = self._session.get(query)
+        entity: PostEntity | None = self._session.scalar(query)
         if not entity:
             return None
         return entity.to_model()
