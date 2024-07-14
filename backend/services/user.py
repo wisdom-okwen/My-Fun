@@ -3,7 +3,7 @@ The User Service provides access to the User model and its associated database o
 """
 
 from fastapi import Depends
-from sqlalchemy import select, String, cast
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from ..models.user import User
