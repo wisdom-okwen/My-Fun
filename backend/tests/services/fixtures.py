@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from ...services import (
     # PermissionService,
     UserService,
+    PostService,
     # RoleService,
     # OrganizationService,
     # EventService,
@@ -34,5 +35,17 @@ def user_svc(session: Session):
 def user_svc_integration(session: Session):
     """This fixture is used to test the UserService class."""
     return UserService(session)
+
+
+@pytest.fixture()
+def post_svc(session: Session):
+    """This fixture is used to test the PostService class."""
+    return PostService(session)
+
+
+@pytest.fixture()
+def post_svc_integration(session: Session):
+    """This fixture is used to test the PostService class."""
+    return PostService(session)
 
 
