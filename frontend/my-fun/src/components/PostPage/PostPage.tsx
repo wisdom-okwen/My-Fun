@@ -4,6 +4,7 @@ import { PostServiceImpl } from "../../services/PostService";
 import { Post } from "../../models/PostCard.model";
 import { PostCard } from "../PostCard/PostCard";
 import { TitleBar } from "./TitleBar";
+import { BottomBar } from "./BottomBar";
 
 const baseUrl = '/api';
 const postService = new PostServiceImpl(baseUrl);
@@ -14,6 +15,10 @@ interface PostPageProps {
 
 const PostPage: React.FC<PostPageProps> = ({ id }) => {
     const [posts, setPosts] = useState<Post[]>();
+
+    const handleCreatePost = () => {
+        console.log('Create post was clicked')
+    }
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -29,9 +34,12 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
     return (
         <div className="post-page">
             <TitleBar />
-            {posts?.map((post, ind) => (
-                <PostCard key={ind} {...post} />
-            ))}
+            <div className="posts"></div>
+                {posts?.map((post, ind) => (
+                    <PostCard key={ind} {...post} />
+                ))}
+            <div className="post-page"></div>
+            <BottomBar handleCreatePost={handleCreatePost}/>
         </div>
     );
 };

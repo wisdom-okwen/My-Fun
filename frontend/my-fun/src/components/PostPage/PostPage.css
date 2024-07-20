@@ -6,15 +6,35 @@
     flex-direction: column;
 }
 
+.posts {
+    height: calc(100% - 100px);
+    top: 0;
+}
+
 .title-bar {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: calc(100% - 15%);
+    padding: 5px;
     height: 70px; 
     position: fixed; 
     top: 0; 
     background-color: #fefefe;
     z-index: 1000;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+}
+
+.fixed-create-post {
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: calc(100% - 15%);
+    height: 70px; 
+    position: fixed; 
+    background-color: #fefefe;
+    z-index: 1000;
+    box-shadow: 0 -8px 10px rgba(0, 0, 0, 0.1);
 }
