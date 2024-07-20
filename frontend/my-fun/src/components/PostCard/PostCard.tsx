@@ -27,24 +27,18 @@ const PostCard: React.FC<PostCardProps> = (props: IPostCardProps) => {
                 <CardHeader
                     avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                        R
+                        JD
                     </Avatar>
                     }
                     action={
                     <IconButton aria-label="settings">
                     </IconButton>
                     }
-                    title={props.description}
+                    title="John Doe"
                     subheader="September 14, 2016"
                 />
                 <img id="image" src={props.image_url}
                     alt="" />
-                {/* <CardMedia
-                    component="img"
-                    height="194"
-                    alt="Hurricane Ridge"
-                    src=''
-                /> */}
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">
                     This impressive paella is a perfect party dish and a fun meal to cook
