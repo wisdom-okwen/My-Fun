@@ -18,7 +18,7 @@ Welcome to the **My Fun App** RESTful Application Programming Interface.
 
 # Metadata to improve the usefulness of OpenAPI Docs /docs API Explorer
 app = FastAPI(
-    title="My Fun App",
+    title="MyFun",
     version="0.0.1",
     description=description,
     openapi_tags=[

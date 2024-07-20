@@ -2,9 +2,13 @@ import React from "react";
 import "./SideBar.css";
 import { Profile } from "../Profile/Profile";
 
-const SideBar: React.FC = () => {
+interface SideBarProps {
+    id: string;
+}
+
+const SideBar: React.FC<SideBarProps> = ({ id }) => {
     return (
-        <div className="sidebar">
+        <div id={id} className="sidebar">
             <Profile />
         </div>
     );

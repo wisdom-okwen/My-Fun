@@ -6,10 +6,10 @@ import { PostPage } from "../PostPage/PostPage";
 const Shell: React.FC = () => {
     return (
         <div className="shell">
-            <SideBar />
-            <PostPage />
+            <SideBar id="side-bar" />
+            <PostPage id="post-page" />
         </div>
     );
 };
 
-export { Shell }
+export { Shell };

@@ -16,8 +16,13 @@ type IPostCardProps = PostCardProps;
 
 const PostCard: React.FC<PostCardProps> = (props: IPostCardProps) => {
     return (
-        <>
-            <Card sx={{ maxWidth: 345 }}>
+        <div className='card-container'>
+            <Card sx={{ 
+                width: 420, 
+                height: 300
+                }}
+                className='post-card'
+            >
                 <CardHeader
                     avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -28,7 +33,7 @@ const PostCard: React.FC<PostCardProps> = (props: IPostCardProps) => {
                     <IconButton aria-label="settings">
                     </IconButton>
                     }
-                    title="Shrimp and Chorizo Paella"
+                    title={props.description}
                     subheader="September 14, 2016"
                 />
                 <CardMedia
@@ -51,7 +56,7 @@ const PostCard: React.FC<PostCardProps> = (props: IPostCardProps) => {
                     </IconButton>
                 </CardActions>
             </Card>
-        </>
+        </div>
     );
 }
 

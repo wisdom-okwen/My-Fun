@@ -7,13 +7,16 @@ import { LoginPage } from './components/LoginPage/LoginPage';
 
 export const App: React.FC = () => {
     return (
-        <BrowserRouter>
-            <UserContextProvider>
-                <Routes>
-                    <Route path="/" element={<Shell />} />
-                    <Route path="/login" element={<LoginPage />} />
-                </Routes>
-            </UserContextProvider>
-        </BrowserRouter>
+        // <div className="container">
+            <BrowserRouter>
+                <UserContextProvider>
+                    <Routes>
+                        <Route path="/" element={<Shell />} />
+                        <Route path="/login" element={<LoginPage />} />
+                    </Routes>
+                </UserContextProvider>
+            </BrowserRouter>
+        // </div>
+        
     );
 };
