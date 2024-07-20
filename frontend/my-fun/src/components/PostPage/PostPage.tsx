@@ -3,7 +3,7 @@ import "./PostPage.css";
 import { PostServiceImpl } from "../../services/PostService";
 import { Post } from "../../models/PostCard.model";
 import { PostCard } from "../PostCard/PostCard";
-import { TitleBar } from "../TitleBar";
+import { TitleBar } from "./TitleBar";
 
 const baseUrl = '/api';
 const postService = new PostServiceImpl(baseUrl);

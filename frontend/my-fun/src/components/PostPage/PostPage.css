@@ -1,7 +1,7 @@
 .post-page {
     flex-grow: 1;
-    padding-top: 120px; /* Add top padding to avoid overlap with the title bar */
-    overflow-y: auto; /* If you have long content in the main content area */
+    padding-top: 120px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
 }
@@ -16,5 +16,5 @@
     top: 0; 
     background-color: #fefefe;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
 }
