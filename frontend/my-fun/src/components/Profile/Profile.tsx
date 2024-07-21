@@ -13,8 +13,8 @@ const Profile: React.FC = () => {
     };
 
     return (
-        <div className="side-bar-item">
-            <Avatar sx={{ color: 'white', backgroundColor: 'crimson' }} onClick={handleAvatarClick} alt="Remy Sharp" src="" />
+        <div className="profile">
+            <Avatar sx={{ color: 'white', backgroundColor: '#084d96' }} onClick={handleAvatarClick} alt="Remy Sharp" src="" />
         </div>
     );
 };

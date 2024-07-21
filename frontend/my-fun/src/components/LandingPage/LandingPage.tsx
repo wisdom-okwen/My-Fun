@@ -1,15 +1,22 @@
 import React from 'react';
 
+
+interface LandingPageProps {
+
+}
+
 const LandingPage: React.FC =() => {
     localStorage.setItem('prevPage', '/');
 
     const headingStyles = {
         margin: '5px',
-        height: '40px'
+        height: '40px',
+        fontFamily: 'URW Chancery L, cursive',
+        color: '#084d96'
     }
     return (
         <h1 style={headingStyles}>
-            Welcome To My Fun!
+            Home
         </h1>
     )
 }
