@@ -26,7 +26,7 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
             if (fetchedPosts) {
                 setPosts(fetchedPosts)
             }
-            console.log(fetchedPosts);
+            console.log(`Fetching, ${fetchedPosts}`);
         }
         fetchPosts();
     }, []);
