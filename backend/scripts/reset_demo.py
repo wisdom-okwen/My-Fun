@@ -18,7 +18,7 @@ from ..database import engine
 from ..env import getenv
 from .. import entities
 
-from ..tests.services import user_data
+from ..tests.services import user_data, post_data
 
 # Ensures that the script can only be run in development mode
 if getenv("MODE") != "development":
@@ -38,5 +38,6 @@ entities.EntityBase.metadata.create_all(engine)
 with Session(engine) as session:
     # Load all demo data
     user_data.insert_fake_data(session)
+    post_data.insert_fake_data(session)
     # Commit changes to the database
     session.commit()

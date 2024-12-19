@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Integer, String
+from sqlalchemy import Boolean, Integer, String, Text
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 from typing import Self
 
@@ -13,12 +13,12 @@ class PostEntity(EntityBase):
     __tablename__ = "post"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    description: Mapped[str] = mapped_column(String(64), nullable=True, default="")
+    description: Mapped[str] = mapped_column(Text, nullable=True, default="")
     author_id: Mapped[int] = mapped_column(Integer, nullable=False)
     state: Mapped[int] = mapped_column(Integer, nullable=False)
-    image_url: Mapped[str] = mapped_column(String(64), nullable=True)
-    date: Mapped[str] = mapped_column(String(64), nullable=False)
-    time: Mapped[str] = mapped_column(String(32), nullable=False)
+    image_url: Mapped[str] = mapped_column(Text, nullable=True)
+    date: Mapped[str] = mapped_column(Text, nullable=False)
+    time: Mapped[str] = mapped_column(Text, nullable=False)
     num_likes: Mapped[int] = mapped_column(Integer, nullable=True)
 
 
