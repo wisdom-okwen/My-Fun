@@ -5,7 +5,7 @@ interface LandingPageProps {
 
 }
 
-const LandingPage: React.FC =() => {
+const LandingPage: React.FC = () => {
     localStorage.setItem('prevPage', '/');
 
     const headingStyles = {
