@@ -40,7 +40,29 @@ post3 = Post(
     num_likes=5
 )
 
-posts = [post1, post2, post3]
+post4 = Post(
+    id=4,
+    description="What's more beautiful than the Appalachian Mountains?",
+    author_id=1,
+    state=1,
+    image_url='hhttps://lh5.googleusercontent.com/p/AF1QipN6WgQ9mhiZhjTvI4ss3WxEtOC9mpzUQXAQVjCT=w1080-h624-n-k-no',
+    date='11/20/2020',
+    time='09:56am',
+    num_likes=5
+)
+
+post5 = Post(
+    id=5,
+    description="ellow Stone Park scared the hell out of me but gave me a solid experience. Loved it!",
+    author_id=1,
+    state=1,
+    image_url='https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcTj41i0yWBVBewfoGxTGQ7FBYMDWMD7cp7lBCxKl7uhe8yan2wYRzEejhKFBzRRcsmHjz3xpnehGfOtnsKjj_sXnavDH2S5r2gHzTi1-Q',
+    date='11/20/2020',
+    time='09:56am',
+    num_likes=5
+)
+
+posts = [post1, post2, post3, post4, post5]
 
 def insert_fake_data(session: Session):
     global posts
