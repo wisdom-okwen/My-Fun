@@ -27,7 +27,6 @@ const PostForm: React.FC<PostFormProps> = ({ open, onClose }) => {
         const date = new Date().toLocaleDateString();
         console.log(`Time: ${time} Date: ${date}`)
         const post: Post = {
-            id: 0,
             description: description,
             author_id: 1,
             state: 0,
@@ -38,7 +37,7 @@ const PostForm: React.FC<PostFormProps> = ({ open, onClose }) => {
         }
         postService.createPost(post)
 
-        onClose(); // Close the modal after submission if desired
+        onClose();
     };
 
   return (
