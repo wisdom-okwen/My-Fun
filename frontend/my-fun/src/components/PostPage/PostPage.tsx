@@ -12,7 +12,7 @@ const baseUrl = '/api';
 const postService = new PostServiceImpl(baseUrl);
 
 interface PostPageProps {
-    id: string;
+    id?: string;
 }
 
 const PostPage: React.FC<PostPageProps> = ({ id }) => {
