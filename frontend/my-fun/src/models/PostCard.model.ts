@@ -12,7 +12,7 @@ export interface PostCardProps {
 
 
 export interface Post {
-    id: number | number;
+    id?: number | number;
     description: string | null;
     author_id: number;
     state: number;
