@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./PostPage.css";
 import { PostServiceImpl } from "../../services/PostService";
 import { Post } from "../../models/PostCard.model";
 import { PostCard } from "../PostCard/PostCard";
 import { TitleBar } from "./TitleBar";
 import { BottomBar } from "./BottomBar";
+import { PostForm } from "../PostForm/PostForm";
+import "./PostPage.css";
+
 
 const baseUrl = '/api';
 const postService = new PostServiceImpl(baseUrl);
@@ -15,9 +17,11 @@ interface PostPageProps {
 
 const PostPage: React.FC<PostPageProps> = ({ id }) => {
     const [posts, setPosts] = useState<Post[]>();
+    const [open, setOpen] = useState(false);
+
 
     const handleCreatePost = () => {
-        console.log('Create post was clicked')
+        setOpen(true);
     }
 
     useEffect(() => {
@@ -26,10 +30,13 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
             if (fetchedPosts) {
                 setPosts(fetchedPosts)
             }
-            console.log(`Fetching, ${fetchedPosts}`);
         }
         fetchPosts();
     }, []);
+
+    const handleCloseModal = () => {
+        setOpen(false);
+    };
 
     return (
         <div className="post-page">
@@ -40,6 +47,7 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
                 ))}
             <div className="post-page"></div>
             <BottomBar handleCreatePost={handleCreatePost}/>
+            <PostForm open={open} onClose={handleCloseModal}/>
         </div>
     );
 };

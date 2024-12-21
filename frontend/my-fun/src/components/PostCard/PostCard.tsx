@@ -10,7 +10,7 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-
+// import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
 type IPostCardProps = PostCardProps;
 
@@ -31,11 +31,11 @@ const PostCard: React.FC<PostCardProps> = (props: IPostCardProps) => {
                     </Avatar>
                     }
                     action={
-                    <IconButton aria-label="settings">
-                    </IconButton>
+                    <IconButton aria-label="settings" />
+                    // </IconButton>
                     }
                     title="John Doe"
-                    subheader="September 14, 2016"
+                    subheader={`${props.time} ${props.date}`}
                 />
                 <img id="image" src={props.image_url}
                     alt="" />
