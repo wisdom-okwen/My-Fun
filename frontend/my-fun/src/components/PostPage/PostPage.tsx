@@ -19,7 +19,6 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
     const [posts, setPosts] = useState<Post[]>();
     const [open, setOpen] = useState(false);
 
-
     const handleCreatePost = () => {
         setOpen(true);
     }
