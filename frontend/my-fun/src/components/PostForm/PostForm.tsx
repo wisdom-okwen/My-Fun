@@ -5,27 +5,22 @@ import { Post } from '../../models/PostCard.model';
 
 interface PostFormProps {
   open: boolean;
+  onPostCreated: () => void;
   onClose: () => void;
 }
 
 const postURL = 'api';
 const postService = new PostServiceImpl(postURL);
 
-const PostForm: React.FC<PostFormProps> = ({ open, onClose }) => {
+const PostForm: React.FC<PostFormProps> = ({ open, onClose, onPostCreated }) => {
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // 1. Use FormData to extract input values by their `name` attribute
         const formData = new FormData(event.currentTarget);
-
-        // Because your TextField for Image URL uses `name="title"`,
-        // we retrieve it via formData.get("title")
         const imageUrl = formData.get("title") as string; 
         const description = formData.get("description") as string;
-
         const time = new Date().toLocaleTimeString();
         const date = new Date().toLocaleDateString();
-        console.log(`Time: ${time} Date: ${date}`)
         const post: Post = {
             description: description,
             author_id: 1,
@@ -35,8 +30,8 @@ const PostForm: React.FC<PostFormProps> = ({ open, onClose }) => {
             time: time,
             date: date
         }
-        postService.createPost(post)
-
+        await postService.createPost(post)
+        onPostCreated();
         onClose();
     };
 
