@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PostCard.css';
 import { PostCardProps } from '../../models/PostCard.model';
 import Card from '@mui/material/Card';
@@ -9,12 +9,54 @@ import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import { Menu } from '@mui/material';
+import MenuItem from '@mui/material/MenuItem';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { red } from '@mui/material/colors';
 // import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
-type IPostCardProps = PostCardProps;
 
-const PostCard: React.FC<PostCardProps> = (props: IPostCardProps) => {
+interface PostCardExtendedProps extends PostCardProps {
+    onDelete?: (id: number) => void;
+    onArchive?: (id: number) => void;
+    onEdit?: (id: number) => void;
+  }
+
+const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps) => {
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+
+    // Open menu
+    const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    // Close menu
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+    };
+
+    // Handle each menu action (delete, archive, edit)
+    const handleDelete = () => {
+        if (props.onDelete && props.id !== undefined) {
+        props.onDelete(props.id);
+        }
+        handleMenuClose();
+    };
+
+    const handleArchive = () => {
+        if (props.onArchive && props.id !== undefined) {
+        props.onArchive(props.id);
+        }
+        handleMenuClose();
+    };
+
+    const handleEdit = () => {
+        if (props.onEdit && props.id !== undefined) {
+        props.onEdit(props.id);
+        }
+        handleMenuClose();
+    };
     return (
         <div className='card-container'>
             <Card sx={{ 
@@ -31,8 +73,31 @@ const PostCard: React.FC<PostCardProps> = (props: IPostCardProps) => {
                     </Avatar>
                     }
                     action={
-                    <IconButton aria-label="settings" />
-                    // </IconButton>
+                        <>
+                        {/* IconButton that opens the menu */}
+                        <IconButton 
+                          aria-label="more"
+                          aria-controls={open ? 'post-options-menu' : undefined}
+                          aria-haspopup="true"
+                          onClick={handleMenuOpen}
+                        >
+                          <MoreVertIcon />
+                        </IconButton>
+                        {/* The Menu itself */}
+                        <Menu
+                          id="post-options-menu"
+                          anchorEl={anchorEl}
+                          open={open}
+                          onClose={handleMenuClose}
+                          MenuListProps={{
+                            'aria-labelledby': 'post-options-menu-button',
+                          }}
+                        >
+                          <MenuItem onClick={handleDelete}>Delete</MenuItem>
+                          <MenuItem onClick={handleArchive}>Archive</MenuItem>
+                          <MenuItem onClick={handleEdit}>Edit</MenuItem>
+                        </Menu>
+                      </>
                     }
                     title="John Doe"
                     subheader={`${props.time} ${props.date}`}

@@ -16,7 +16,7 @@ interface PostPageProps {
 }
 
 const PostPage: React.FC<PostPageProps> = ({ id }) => {
-    const [posts, setPosts] = useState<Post[]>();
+    const [posts, setPosts] = useState<Post[]>([]);
     const [open, setOpen] = useState(false);
 
     const handleCreatePost = () => {
@@ -43,12 +43,32 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
         handleCloseModal();
       };
 
+      const handleDeletePost = async (id: number) => {
+        await postService.deletePost(id);
+        fetchPosts(); // refresh
+      };
+      
+      const handleArchivePost = async (id: number) => {
+        // your archive logic
+        // await postService.archivePost(id);
+        fetchPosts(); // refresh
+      };
+      
+      const handleEditPost = (id: number) => {
+        // show an edit modal or navigate to an edit page
+      };
     return (
         <div className="post-page">
             <TitleBar />
             <div className="posts"></div>
-                {posts?.map((post, ind) => (
-                    <PostCard key={ind} {...post} />
+            {posts.map((post) => (
+                <PostCard
+                    key={post.id}
+                    {...post}
+                    onDelete={handleDeletePost}
+                    onArchive={handleArchivePost}
+                    onEdit={handleEditPost}
+                />
                 ))}
             <div className="post-page"></div>
             <BottomBar handleCreatePost={handleCreatePost}/>
