@@ -19,24 +19,29 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
     const [posts, setPosts] = useState<Post[]>();
     const [open, setOpen] = useState(false);
 
-
     const handleCreatePost = () => {
         setOpen(true);
     }
 
-    useEffect(() => {
-        const fetchPosts = async () => {
-            const fetchedPosts = await postService.getPosts();
-            if (fetchedPosts) {
-                setPosts(fetchedPosts)
-            }
+    const fetchPosts = async () => {
+        const fetchedPosts = await postService.getPosts();
+        if (fetchedPosts) {
+            setPosts(fetchedPosts)
         }
+    };
+
+    useEffect(() => {
         fetchPosts();
     }, []);
 
     const handleCloseModal = () => {
         setOpen(false);
     };
+
+    const handlePostCreated = async () => {
+        await fetchPosts(); 
+        handleCloseModal();
+      };
 
     return (
         <div className="post-page">
@@ -47,7 +52,7 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
                 ))}
             <div className="post-page"></div>
             <BottomBar handleCreatePost={handleCreatePost}/>
-            <PostForm open={open} onClose={handleCloseModal}/>
+            <PostForm open={open} onClose={handleCloseModal} onPostCreated={handlePostCreated}/>
         </div>
     );
 };
