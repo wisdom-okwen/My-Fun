@@ -1,5 +1,5 @@
 # Frontend build
-FROM node:18 as build
+FROM node:20 as build
 # Set working directory
 WORKDIR /workspace/frontend/my-fun
 # Copy package files
