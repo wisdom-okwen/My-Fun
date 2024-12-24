@@ -102,15 +102,36 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
         <img id="image" src={props.image_url} alt="" />
         <div className="metric-icons">
           <div className="like">
-            <ThumbUpIcon sx={{ color: '#0056b3' }} />
+            <ThumbUpIcon sx={{
+                color: '#0056b3',
+                cursor: 'pointer',
+                transition: 'transform 0.2s, color 0.2s'
+            }}
+            onMouseEnter={() => console.log('Hovered over Like icon')}
+            onClick={() => console.log('Like icon clicked')}
+            />
             <div className="num-likes">{props.num_likes}</div>
           </div>
           <div className="comment">
-            <CommentIcon sx={{ color: '#0056b3' }} />
+            <CommentIcon sx={{
+                color: '#0056b3',
+                cursor: 'pointer', // Changes cursor to pointer on hover
+                transition: 'transform 0.2s, color 0.2s'
+            }}
+            onMouseEnter={() => console.log('Hovered over Comment icon')}
+            onClick={() => console.log('Comment icon clicked')}
+            />
             <div className="num-likes">{props.num_comments}</div>
           </div>
           <div className="send">
-            <SendIcon sx={{ color: '#0056b3' }} />
+            <SendIcon sx={{
+                color: '#0056b3',
+                cursor: 'pointer', // Changes cursor to pointer on hover
+                transition: 'transform 0.2s, color 0.2s'
+            }}
+            onMouseEnter={() => console.log('Hovered over Send icon')}
+            onClick={() => console.log('Send icon clicked')}
+            />
             <div className="num-likes">{props.num_shares}</div>
           </div>
         </div>
