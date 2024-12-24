@@ -3,7 +3,6 @@ import './PostCard.css';
 import { PostCardProps } from '../../models/PostCard.model';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-// import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
@@ -16,7 +15,6 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import SendIcon from '@mui/icons-material/Send';
 import CommentIcon from '@mui/icons-material/Comment';
 import { red } from '@mui/material/colors';
-// import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
 
 interface PostCardExtendedProps extends PostCardProps {
@@ -109,21 +107,15 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
                 <div className="metric-icons">
                     <div className="like">
                         <ThumbUpIcon sx={{ color: '#0056b3' }}/>
-                        <div className="num-likes">
-                            {props.num_likes}
-                        </div>
+                        <div className="num-likes">{props.num_likes}</div>
                     </div>
                     <div className="comment">
                         <CommentIcon sx={{ color: '#0056b3' }}/>
-                        <div className="num-likes">
-                            {props.num_comments}
-                        </div>
+                        <div className="num-likes">{props.num_comments}</div>
                     </div>
                     <div className="send">
                         <SendIcon sx={{ color: '#0056b3' }}/>
-                        <div className="num-likes">
-                            {props.num_shares}
-                        </div>
+                        <div className="num-likes">{props.num_shares}</div>
                     </div> 
                 </div>
                 <CardContent>
