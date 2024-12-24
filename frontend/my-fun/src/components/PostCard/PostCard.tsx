@@ -22,8 +22,8 @@ interface PostCardExtendedProps extends PostCardProps {
 }
 
 const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps) => {
-  const open = Boolean(anchorEl);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
   const [expanded, setExpanded] = useState(false);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
