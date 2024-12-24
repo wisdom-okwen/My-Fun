@@ -5,8 +5,7 @@ class State(Enum):
     DRAFT = 1
     PUBLISHED = 2
     ARCHIVED = 3
-    PENDING = 4
-    DENIED = 5
+    DELETED = 4
 
 
 class Post(BaseModel):
@@ -25,3 +24,5 @@ class Post(BaseModel):
     date: str
     time: str
     num_likes: int
+    num_shares: int
+    num_comments: int

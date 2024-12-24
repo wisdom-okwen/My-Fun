@@ -45,7 +45,7 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
 
       const handleDeletePost = async (id: number) => {
         await postService.deletePost(id);
-        fetchPosts(); // refresh
+        fetchPosts();
       };
       
       const handleArchivePost = async (id: number) => {
@@ -57,6 +57,7 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
       const handleEditPost = (id: number) => {
         // show an edit modal or navigate to an edit page
       };
+      
     return (
         <div className="post-page">
             <TitleBar />

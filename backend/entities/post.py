@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Integer, String, Text
+from sqlalchemy import Boolean, Integer, Enum, Text
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 from typing import Self
 
@@ -20,6 +20,8 @@ class PostEntity(EntityBase):
     date: Mapped[str] = mapped_column(Text, nullable=False)
     time: Mapped[str] = mapped_column(Text, nullable=False)
     num_likes: Mapped[int] = mapped_column(Integer, nullable=True)
+    num_comments: Mapped[int] = mapped_column(Integer, nullable=True)
+    num_shares: Mapped[int] = mapped_column(Integer, nullable=True)
 
 
     @classmethod
@@ -41,7 +43,9 @@ class PostEntity(EntityBase):
             image_url=model.image_url,
             date=model.date,
             time=model.time,
-            num_likes=model.num_likes
+            num_likes=model.num_likes,
+            num_shares=model.num_shares,
+            num_comments=model.num_comments
         )
 
     def to_model(self) -> Post:
@@ -59,5 +63,7 @@ class PostEntity(EntityBase):
             image_url=self.image_url,
             date=self.date,
             time=self.time,
-            num_likes=self.num_likes
+            num_likes=self.num_likes,
+            num_shares=self.num_shares,
+            num_comments=self.num_comments
         )

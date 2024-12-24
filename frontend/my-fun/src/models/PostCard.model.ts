@@ -6,6 +6,8 @@ export interface PostCardProps {
     state: number;
     image_url: string;
     num_likes: number;
+    num_shares: number;
+    num_comments: number;
     time: string;
     date: string;
 }
@@ -18,6 +20,8 @@ export interface Post {
     state: number;
     image_url: string;
     num_likes: number;
+    num_shares: number;
+    num_comments: number;
     time: string;
     date: string;
 }

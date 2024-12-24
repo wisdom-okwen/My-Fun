@@ -27,6 +27,8 @@ const PostForm: React.FC<PostFormProps> = ({ open, onClose, onPostCreated }) => 
             state: 0,
             image_url: imageUrl,
             num_likes: 0,
+            num_shares: 0,
+            num_comments: 0,
             time: time,
             date: date
         }

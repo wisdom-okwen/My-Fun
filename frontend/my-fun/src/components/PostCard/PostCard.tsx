@@ -12,6 +12,9 @@ import Typography from '@mui/material/Typography';
 import { Menu } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import SendIcon from '@mui/icons-material/Send';
+import CommentIcon from '@mui/icons-material/Comment';
 import { red } from '@mui/material/colors';
 // import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
@@ -102,11 +105,30 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
                     title="John Doe"
                     subheader={`${props.time} ${props.date}`}
                 />
-                <img id="image" src={props.image_url}
-                    alt="" />
+                <img id="image" src={props.image_url} alt="" />
+                <div className="metric-icons">
+                    <div className="like">
+                        <ThumbUpIcon sx={{ color: '#0056b3' }}/>
+                        <div className="num-likes">
+                            {props.num_likes}
+                        </div>
+                    </div>
+                    <div className="comment">
+                        <CommentIcon sx={{ color: '#0056b3' }}/>
+                        <div className="num-likes">
+                            {props.num_comments}
+                        </div>
+                    </div>
+                    <div className="send">
+                        <SendIcon sx={{ color: '#0056b3' }}/>
+                        <div className="num-likes">
+                            {props.num_shares}
+                        </div>
+                    </div> 
+                </div>
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">
-                    {props.description}
+                        {props.description}
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
