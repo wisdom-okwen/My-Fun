@@ -57,7 +57,7 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
       const handleEditPost = (id: number) => {
         // show an edit modal or navigate to an edit page
       };
-      
+
     return (
         <div className="post-page">
             <TitleBar />
