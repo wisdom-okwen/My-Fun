@@ -38,6 +38,16 @@ class UserServiceImpl implements UserService {
             return null;
         });
     };
+
+    async googleLogin(token: string) {
+        try {
+            const response = await axios.post(`${this.baseUrl}/auth/google`, { token });
+            return response.data;
+        } catch (error) {
+            console.error('Google login failed:', error);
+            throw error;
+        }
+    }
 };
 
 export { UserServiceImpl }

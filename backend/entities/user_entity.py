@@ -19,7 +19,7 @@ class UserEntity(EntityBase):
     # Last name of user
     last_name: Mapped[str] = mapped_column(String(64), nullable=False, default="")
     # User name which also represents myfun handle
-    username: Mapped[str] = mapped_column(String(64), unique=True, nullable=False, default="")
+    username: Mapped[str] = mapped_column(String(64), unique=True, nullable=True, default="")
     # User's unique email address
     email: Mapped[str] = mapped_column(String(64), unique=True, nullable=False, default="")
     # User's bio info
