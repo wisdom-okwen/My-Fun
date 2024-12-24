@@ -26,22 +26,18 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
   const [expanded, setExpanded] = useState(false);
   const open = Boolean(anchorEl);
 
-  // Open menu
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  // Close menu
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
 
-  // Toggle description view
   const toggleExpanded = () => {
     setExpanded(!expanded);
   };
 
-  // Handle actions
   const handleDelete = () => {
     if (props.onDelete && props.id !== undefined) {
       props.onDelete(props.id);
