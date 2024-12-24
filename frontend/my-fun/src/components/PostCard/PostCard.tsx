@@ -8,7 +8,6 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
@@ -17,10 +16,6 @@ import CommentIcon from '@mui/icons-material/Comment';
 
 
 interface PostCardExtendedProps extends PostCardProps {
-  onDelete?: (id: number) => void;
-  onArchive?: (id: number) => void;
-  onEdit?: (id: number) => void;
-}
   onDelete?: (id: number) => void;
   onArchive?: (id: number) => void;
   onEdit?: (id: number) => void;
@@ -50,12 +45,6 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
     handleMenuClose();
   };
 
-  const handleArchive = () => {
-    if (props.onArchive && props.id !== undefined) {
-      props.onArchive(props.id);
-    }
-    handleMenuClose();
-  };
   const handleArchive = () => {
     if (props.onArchive && props.id !== undefined) {
       props.onArchive(props.id);
