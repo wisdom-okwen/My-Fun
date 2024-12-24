@@ -23,3 +23,36 @@
     width: 100%;
     height: auto;
 }
+
+.metric-icons {
+    margin: 5px;
+    display: flex;
+    justify-content: flex-start;
+    
+}
+
+.like {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 10px;
+}
+
+.comment {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 5px;
+    align-items: center;
+}
+
+.send {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 5px;
+}
+
+.num-likes {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+}
