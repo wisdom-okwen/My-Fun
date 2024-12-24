@@ -13,4 +13,4 @@ class User(BaseModel):
     bio: str | None = None
     pronouns: str | None = None
     phone: str | None = None
-    password: str = ''
+    password: str | None = None

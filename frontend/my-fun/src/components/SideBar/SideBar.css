@@ -15,6 +15,7 @@
     /* flex-shrink: 0; */
     display: flex;
     /* align-items: center; */
+    font-family: 'URW Chancery L, cursive';
     justify-content: center;
     margin-bottom: 2rem 0;
 }

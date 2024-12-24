@@ -15,11 +15,7 @@ const SideBar: React.FC<SideBarProps> = ({ id }) => {
                 <div className="side-bar-item">My Bucket List</div>
                 <div className="side-bar-item">Archived Posts</div>
                 <div className="side-bar-item">My Recommendations</div>
-                {/* <div className="side-bar-item">Hey There</div>
-                <div className="side-bar-item">Hey There</div>
-                <div className="side-bar-item">Hey There</div>
-                <div className="side-bar-item">Hey There</div>
-                <div className="side-bar-item">Hey There</div> */}
+                <div className="side-bar-item">What To Do In City</div>
             </div>
             <Profile />
         </div>
