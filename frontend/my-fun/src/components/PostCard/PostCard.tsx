@@ -115,7 +115,7 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
           <div className="comment">
             <CommentIcon sx={{
                 color: '#0056b3',
-                cursor: 'pointer', // Changes cursor to pointer on hover
+                cursor: 'pointer',
                 transition: 'transform 0.2s, color 0.2s'
             }}
             onMouseEnter={() => console.log('Hovered over Comment icon')}
