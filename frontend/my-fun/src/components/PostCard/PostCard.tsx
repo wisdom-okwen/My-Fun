@@ -8,6 +8,7 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
+import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
@@ -20,28 +21,31 @@ interface PostCardExtendedProps extends PostCardProps {
   onArchive?: (id: number) => void;
   onEdit?: (id: number) => void;
 }
+  onDelete?: (id: number) => void;
+  onArchive?: (id: number) => void;
+  onEdit?: (id: number) => void;
+}
 
 const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [expanded, setExpanded] = useState(false);
   const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [expanded, setExpanded] = useState(false);
+  const open = Boolean(anchorEl);
 
-  // Open menu
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  // Close menu
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
 
-  // Toggle description view
   const toggleExpanded = () => {
     setExpanded(!expanded);
   };
 
-  // Handle actions
   const handleDelete = () => {
     if (props.onDelete && props.id !== undefined) {
       props.onDelete(props.id);
@@ -49,6 +53,12 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
     handleMenuClose();
   };
 
+  const handleArchive = () => {
+    if (props.onArchive && props.id !== undefined) {
+      props.onArchive(props.id);
+    }
+    handleMenuClose();
+  };
   const handleArchive = () => {
     if (props.onArchive && props.id !== undefined) {
       props.onArchive(props.id);
@@ -106,15 +116,36 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
         <img id="image" src={props.image_url} alt="" />
         <div className="metric-icons">
           <div className="like">
-            <ThumbUpIcon sx={{ color: '#0056b3' }} />
+            <ThumbUpIcon sx={{
+                color: '#0056b3',
+                cursor: 'pointer',
+                transition: 'transform 0.2s, color 0.2s'
+            }}
+            onMouseEnter={() => console.log('Hovered over Like icon')}
+            onClick={() => console.log('Like icon clicked')}
+            />
             <div className="num-likes">{props.num_likes}</div>
           </div>
           <div className="comment">
-            <CommentIcon sx={{ color: '#0056b3' }} />
+            <CommentIcon sx={{
+                color: '#0056b3',
+                cursor: 'pointer', // Changes cursor to pointer on hover
+                transition: 'transform 0.2s, color 0.2s'
+            }}
+            onMouseEnter={() => console.log('Hovered over Comment icon')}
+            onClick={() => console.log('Comment icon clicked')}
+            />
             <div className="num-likes">{props.num_comments}</div>
           </div>
           <div className="send">
-            <SendIcon sx={{ color: '#0056b3' }} />
+            <SendIcon sx={{
+                color: '#0056b3',
+                cursor: 'pointer', // Changes cursor to pointer on hover
+                transition: 'transform 0.2s, color 0.2s'
+            }}
+            onMouseEnter={() => console.log('Hovered over Send icon')}
+            onClick={() => console.log('Send icon clicked')}
+            />
             <div className="num-likes">{props.num_shares}</div>
           </div>
         </div>
