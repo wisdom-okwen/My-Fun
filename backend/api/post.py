@@ -37,11 +37,13 @@ def new_post(
     return post_service.create(post)
 
 
-@api.put('', response_model=Post, tags=['Posts'])
+@api.put('/{id}', response_model=Post, tags=['Posts'])
 def update_post(
-    post: Post,
+    id: int, 
+    post: Post, 
     post_service: PostService = Depends()
 ) -> Post:
+    post.id = id  # Ensure the ID is set in the Post object
     return post_service.update(post)
 
 

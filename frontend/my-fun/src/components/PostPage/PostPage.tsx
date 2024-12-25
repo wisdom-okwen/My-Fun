@@ -50,7 +50,11 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
       
       const handleArchivePost = async (id: number) => {
         // your archive logic
-        // await postService.archivePost(id);
+        const post = await postService.getPost(id);
+        if (post) {
+            post.state = 3;
+            await postService.updatePost(post);
+        }
         fetchPosts(); // refresh
       };
       
