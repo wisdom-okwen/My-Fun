@@ -64,6 +64,16 @@ class PostServiceImpl implements PostService {
             return null;
         }
     }
+
+    async archivePost(id: number): Promise<Post | null>{
+        try {
+            const resonse = await axios.put(`${this.baseUrl}/posts/${id}`);
+            return resonse.data;
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    }
 }
 
 export { PostServiceImpl }
