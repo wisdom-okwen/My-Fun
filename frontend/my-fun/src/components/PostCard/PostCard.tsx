@@ -11,8 +11,10 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import SendIcon from '@mui/icons-material/Send';
-import CommentIcon from '@mui/icons-material/Comment';
+import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
+import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import { PostServiceImpl } from '../../services/PostService';
 
 
 interface PostCardExtendedProps extends PostCardProps {
@@ -22,9 +24,13 @@ interface PostCardExtendedProps extends PostCardProps {
 }
 
 const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps) => {
+  const postService = new PostServiceImpl('/api');
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [expanded, setExpanded] = useState(false);
   const open = Boolean(anchorEl);
+  const [liked, setLiked] = useState(false);
+  const [numLikes, setNumLikes] = useState(props.num_likes);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -58,6 +64,42 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
     }
     handleMenuClose();
   };
+
+  const handleLikeClicked = async () => {
+    try {
+      if (props.id === undefined) {
+        console.error("Post ID is undefined");
+        return;
+      }
+      
+      const post = await postService.getPost(props.id);
+      if (!post) {
+          console.error("Post not found");
+          return;
+      }
+
+      const updatedPost = {
+          ...post,
+          num_likes: (post.num_likes || 0) + 1,
+      };
+      setLiked((prevLiked: any) => !prevLiked);
+      setNumLikes((prev) => liked ? prev - 1 : prev + 1);
+      const newPost = await postService.updatePost(updatedPost);
+      console.log(newPost);
+
+    } catch (error) {
+        console.error("Failed to update post likes:", error);
+        setLiked((prevLiked: any) => !prevLiked);
+      }
+  };
+
+  const handleCommentClicked = () => {
+    
+  }
+
+  const handleSendClicked = () => {
+
+  }
 
   const descriptionLength = props.description?.length || 0;
 
@@ -102,18 +144,30 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
         <img id="image" src={props.image_url} alt="" />
         <div className="metric-icons">
           <div className="like">
-            <ThumbUpIcon sx={{
-                color: '#0056b3',
-                cursor: 'pointer',
-                transition: 'transform 0.2s, color 0.2s'
-            }}
-            onMouseEnter={() => {}}
-            onClick={() => {}}
-            />
-            <div className="num-likes">{props.num_likes}</div>
+          {liked ? (
+                <ThumbUpIcon
+                    sx={{
+                        color: '#0056b3',
+                        cursor: 'pointer',
+                        transition: 'transform 0.2s, color 0.2s'
+                    }}
+                    onClick={handleLikeClicked}
+                />
+            ) : (
+                <ThumbUpOutlinedIcon
+                    sx={{
+                        color: '#0056b3',
+                        cursor: 'pointer',
+                        transition: 'transform 0.2s, color 0.2s'
+                    }}
+                    onClick={handleLikeClicked}
+                />
+            )}
+            <div className="num-likes">{numLikes}</div>
           </div>
           <div className="comment">
-            <CommentIcon sx={{
+            <CommentOutlinedIcon 
+              sx={{
                 color: '#0056b3',
                 cursor: 'pointer',
                 transition: 'transform 0.2s, color 0.2s'
@@ -124,7 +178,8 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
             <div className="num-likes">{props.num_comments}</div>
           </div>
           <div className="send">
-            <SendIcon sx={{
+            <SendOutlinedIcon 
+              sx={{
                 color: '#0056b3',
                 cursor: 'pointer',
                 transform: 'rotate(-30deg)',
