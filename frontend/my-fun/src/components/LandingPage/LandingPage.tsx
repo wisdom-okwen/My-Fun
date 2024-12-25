@@ -1,10 +1,6 @@
 import React from 'react';
 
 
-interface LandingPageProps {
-
-}
-
 const LandingPage: React.FC = () => {
     localStorage.setItem('prevPage', '/');
 
