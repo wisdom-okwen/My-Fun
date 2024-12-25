@@ -26,9 +26,11 @@ const PostPage: React.FC<PostPageProps> = ({ id }) => {
     const fetchPosts = async () => {
         const fetchedPosts = await postService.getPosts();
         if (fetchedPosts) {
-            setPosts(fetchedPosts)
+            const publishedPosts = fetchedPosts.filter(post => post.state === 2);
+            setPosts(publishedPosts);
         }
     };
+    
 
     useEffect(() => {
         fetchPosts();

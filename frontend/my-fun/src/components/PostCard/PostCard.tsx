@@ -107,8 +107,8 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
                 cursor: 'pointer',
                 transition: 'transform 0.2s, color 0.2s'
             }}
-            onMouseEnter={() => console.log('Hovered over Like icon')}
-            onClick={() => console.log('Like icon clicked')}
+            onMouseEnter={() => {}}
+            onClick={() => {}}
             />
             <div className="num-likes">{props.num_likes}</div>
           </div>
@@ -118,19 +118,20 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
                 cursor: 'pointer',
                 transition: 'transform 0.2s, color 0.2s'
             }}
-            onMouseEnter={() => console.log('Hovered over Comment icon')}
-            onClick={() => console.log('Comment icon clicked')}
+            onMouseEnter={() => {}}
+            onClick={() => {}}
             />
             <div className="num-likes">{props.num_comments}</div>
           </div>
           <div className="send">
             <SendIcon sx={{
                 color: '#0056b3',
-                cursor: 'pointer', // Changes cursor to pointer on hover
+                cursor: 'pointer',
+                transform: 'rotate(-30deg)',
                 transition: 'transform 0.2s, color 0.2s'
             }}
-            onMouseEnter={() => console.log('Hovered over Send icon')}
-            onClick={() => console.log('Send icon clicked')}
+            onMouseEnter={() => {}}
+            onClick={() => {}}
             />
             <div className="num-likes">{props.num_shares}</div>
           </div>

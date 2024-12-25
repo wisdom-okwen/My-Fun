@@ -24,7 +24,7 @@ const PostForm: React.FC<PostFormProps> = ({ open, onClose, onPostCreated }) => 
       const post: Post = {
           description: description,
           author_id: 1,
-          state: 0,
+          state: 2,
           image_url: imageUrl,
           num_likes: 0,
           num_shares: 0,
