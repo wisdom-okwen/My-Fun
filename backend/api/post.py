@@ -37,7 +37,7 @@ def new_post(
     return post_service.create(post)
 
 
-@api.put('', response_model=Post, tags=['Posts'])
+@api.put('/{id}', response_model=Post, tags=['Posts'])
 def update_post(
     post: Post,
     post_service: PostService = Depends()
