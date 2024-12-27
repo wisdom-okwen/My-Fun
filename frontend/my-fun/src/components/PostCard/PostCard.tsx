@@ -105,7 +105,7 @@ const PostCard: React.FC<PostCardExtendedProps> = (props: PostCardExtendedProps)
 
   return (
     <div className="card-container">
-      <Card sx={{ width: 420, padding: 1 }} className="post-card">
+      <Card sx={{ width: 500, padding: 1 }} className="post-card">
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: '#0056b3', fontWeight: '700' }} aria-label="recipe">
