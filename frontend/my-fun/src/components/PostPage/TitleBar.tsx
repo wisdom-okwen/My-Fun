@@ -6,7 +6,9 @@ import './TitleBar.css';
 const TitleBar: React.FC = () => {
     return (
         <div className="title-bar">
-            <LandingPage />
+            <div className="title-center">
+                <LandingPage />
+            </div>
             <div className="settings-icon">
                 <SettingsIcon
                     sx={{
@@ -18,7 +20,6 @@ const TitleBar: React.FC = () => {
                 />
             </div>
         </div>
-
     );
 }
 
