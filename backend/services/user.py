@@ -6,6 +6,11 @@ from fastapi import Depends
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from ..utility.security import hash_password
+from fastapi.security import OAuth2PasswordBearer
+import jwt
+from datetime import datetime
+
 from ..models.user import User
 from ..database import db_session
 from ..entities.user_entity import UserEntity
@@ -72,6 +77,7 @@ class UserService:
         # if subject != user:
         #     self._permission.enforce(subject, "user.create", "user/")
         entity = UserEntity.from_model(user)
+        entity.password = hash_password(entity.password or "")
         self._session.add(entity)
         self._session.commit()
         return entity.to_model()
