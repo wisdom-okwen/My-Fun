@@ -7,10 +7,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 
 from .api import (
+    google_auth,
     user,
     static_files,
-    post,
-    google_auth
+    post
 )
 
 description = """
@@ -23,9 +23,9 @@ app = FastAPI(
     version="0.0.1",
     description=description,
     openapi_tags=[
+        google_auth.openapi_tags,
         user.openapi_tags,
         post.openapi_tags,
-        google_auth.openapi_tags
     ],
 )
 

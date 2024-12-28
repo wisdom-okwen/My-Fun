@@ -168,3 +168,8 @@ class UserService:
         # Save changes
         self._session.commit()
 
+
+    def get_by_email(self, email: str) -> User | None:
+        query = select(UserEntity).where(UserEntity.email == email)
+        user_entity = self._session.scalar(query)
+        return user_entity.to_model() if user_entity else None
